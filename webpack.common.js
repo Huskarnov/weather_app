@@ -1,45 +1,44 @@
-const path = require('path');
+const path = require("path");
 
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
-  entry: './src/index.js',
+  entry: "./src/index.js",
   output: {
-    filename: 'main.js',
-    path: path.resolve(__dirname, 'dist'),
+    filename: "main.js",
+    path: path.resolve(__dirname, "dist"),
     clean: true,
   },
 
   plugins: [
     new HtmlWebpackPlugin({
-      template: './src/template.html',
-      title:
-        'CHANGEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE',
+      template: "./src/template.html",
+      title: "weather_app",
     }),
   ],
   module: {
     rules: [
       {
         test: /\.css$/i,
-        use: ['style-loader', 'css-loader'],
+        use: ["style-loader", "css-loader"],
       },
       {
         test: /\.html$/i,
-        loader: 'html-loader',
+        loader: "html-loader",
       },
       {
-        test: /\.(png|svg|jpg|jpeg|gif)$/i,
-        type: 'asset/resource',
+        test: /\.(png|svg|jpg|jpeg|gif|webm)$/i,
+        type: "asset/resource",
       },
       {
         test: /\.(woff|woff2|ttf|otf|eot)$/i,
-        type: 'asset/resource',
+        type: "asset/resource",
       },
       {
         test: /\.mp3$/,
-        loader: 'file-loader',
-        query: {
-          name: '[name].[ext]',
+        loader: "file-loader",
+        options: {
+          name: "[name].[ext]",
         },
       },
     ],
