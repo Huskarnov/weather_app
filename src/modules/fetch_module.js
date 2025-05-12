@@ -13,7 +13,7 @@
 async function getData() {
   try {
     const response = await fetch(
-      "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/batna?key=MRS6M7KMEV78MFG3967BMDGGN&unitGroup=metric",
+      "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/batna?key=MRS6M7KMEV78MFG3967BMDGGN&unitGroup=metric&include=current,hours",
       { mode: "cors" }
     );
 

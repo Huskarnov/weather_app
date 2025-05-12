@@ -7,6 +7,7 @@
 html {
   font-size: 62.5%;
   font-family: "Montserrat";
+  user-select: none;
 }
 
 /* 1. Use a more-intuitive box-sizing model */
@@ -82,6 +83,135 @@ h6 {
 }
 /* ---------------------------------------------------------- */
 header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  & h2 {
+    font-size: 4rem;
+    text-align: center;
+  }
+
+  & .inputBlock {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+
+    font-size: 2rem;
+
+    height: 50px;
+
+    & input {
+      height: 30px;
+      text-indent: 5px;
+    }
+
+    & button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 30px;
+      padding: 0px 30px;
+
+      cursor: pointer;
+    }
+  }
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.todayCast {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  /* background-color: rebeccapurple; */
+}
+
+.todayLeft {
+  /* background-color: rebeccapurple; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+}
+.city {
   font-size: 3rem;
+  font-weight: 800;
+}
+.todayDateHoure {
+  font-size: 2rem;
+}
+
+.todayState {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+  /* background-color: red; */
+
+  & img {
+    /* background-color: green; */
+    height: 150px;
+  }
+
+  & p {
+    font-size: 2rem;
+    font-style: italic;
+  }
+}
+
+.todayTemperature {
+  font-size: 2rem;
+  font-weight: 800;
+}
+
+.todayRight {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  gap: 10px;
+
+  height: 100%;
+  /* background-color: aqua; */
+}
+
+.todayFeel p {
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
   text-align: center;
+  color: grey;
+  font-weight: 500;
+}
+
+.todayRain {
+  font-size: 2rem;
+}
+
+.todayWind {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  & p {
+    text-align: center;
+  }
+}
+.todayArrow {
+  font-size: 1.5rem;
+  text-align: center;
+}
+.windPower {
+  font-size: 2rem;
+  font-weight: 500;
 }
