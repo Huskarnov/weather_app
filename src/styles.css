@@ -3,6 +3,11 @@
   font-family: 'Rye';
   src: url(./Rye-Regular.ttf);
 } */
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Rye&display=swap");
+html {
+  font-size: 62.5%;
+  font-family: "Montserrat";
+}
 
 /* 1. Use a more-intuitive box-sizing model */
 *,
@@ -76,3 +81,7 @@ h6 {
   isolation: isolate;
 }
 /* ---------------------------------------------------------- */
+header {
+  font-size: 3rem;
+  text-align: center;
+}
