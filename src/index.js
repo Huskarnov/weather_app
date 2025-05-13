@@ -2,5 +2,6 @@
 
 import "./styles.css";
 import "./styles_hours.css";
+import "./styles_loader.css";
 
 import "./modules/fetch_module";

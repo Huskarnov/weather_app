@@ -15,6 +15,20 @@ const todayCast = document.querySelector(".todayCast");
 const city = document.querySelector(".city");
 const todayDateHoure = document.querySelector(".todayDateHoure");
 const todayState = document.querySelector(".todayState > p");
+const todayTemperature = document.querySelector(".todayTemperature");
+const todayFeel = document.querySelector(".todayFeel > p:nth-Child(2)");
+const todayRain = document.querySelector(".todayRain");
+const todayArrow = document.querySelector(".todayArrow");
+const windPower = document.querySelector(".windPower");
+
+const futureTop = document.querySelector(".futureTop").children;
+const futureMid = document.querySelector(".futureMid").children;
+const futureBot = document.querySelector(".futureBot").children;
+const hourlyElements = [
+  ...Array.from(futureTop),
+  ...Array.from(futureMid),
+  ...Array.from(futureBot),
+];
 
 function populate(data) {
   city.textContent = data.resolvedAddress;
@@ -23,8 +37,45 @@ function populate(data) {
     data.days[0].datetime
   }`;
   todayState.textContent = data.days[0].conditions;
+  // selectBackground(data.days[0].conditions);
   todayCast.style.backgroundImage = selectBackground(data.days[0].conditions);
-  //   todayCast.style.backgroundImage = `url(${rain})`;
+  todayTemperature.textContent = `${data.days[0].temp}°C`;
+  todayFeel.textContent = `${data.days[0].feelslike}°C`;
+  todayRain.textContent = `${data.days[0].precip}mm`;
+  todayArrow.style.transform = `rotate(${90 - data.days[0].winddir}deg)`;
+  windPower.textContent = `${data.days[0].windspeed} km/h`;
+
+  let currentHour = parseInt(data.currentConditions.datetime.slice(0, 2)) + 3;
+  let currentDay = 0;
+
+  hourlyElements.forEach((element, index) => {
+    // houre
+    element.children[0].textContent = `${currentHour}:00`;
+    // image
+    element.children[1].style.backgroundImage = selectBackground(
+      data.days[currentDay].hours[currentHour].conditions
+    );
+    // state
+    element.children[2].textContent =
+      data.days[currentDay].hours[currentHour].conditions;
+    // temperature
+    element.children[3].textContent = `${data.days[currentDay].hours[currentHour].temp}°C`;
+    // precipitation
+    element.children[4].textContent = `${data.days[currentDay].hours[currentHour].precip}mm`;
+
+    if (currentHour == 21 || currentHour == 22 || currentHour == 23) {
+      currentDay = 1;
+    }
+    if (currentHour == 21) {
+      currentHour = 0;
+    } else if (currentHour == 22) {
+      currentHour = 1;
+    } else if (currentHour == 23) {
+      currentHour = 2;
+    } else {
+      currentHour += 3;
+    }
+  });
 }
 
 function numberToDay(number) {
@@ -54,33 +105,52 @@ function numberToDay(number) {
 }
 
 function selectBackground(conditions) {
-  if (`${conditions}`.includes("cloud")) {
-    todayCast.style.backgroundImage = `url(${rain})`;
+  if (`${conditions}`.includes("ust")) {
+    return `url(${dust})`;
+  } else if (`${conditions}`.includes("lear")) {
+    return `url(${clear})`;
+  } else if (`${conditions}`.includes("ain")) {
+    return `url(${rain})`;
+  } else if (`${conditions}`.includes("loud")) {
+    return `url(${cloud})`;
+  } else if (`${conditions}`.includes("og")) {
+    return `url(${fog})`;
+  } else if (`${conditions}`.includes("ail")) {
+    return `url(${hail})`;
+  } else if (`${conditions}`.includes("aze")) {
+    return `url(${haze})`;
+  } else if (`${conditions}`.includes("vercast")) {
+    return `url(${overcast})`;
+  } else if (`${conditions}`.includes("now")) {
+    return `url(${snow})`;
+  } else if (`${conditions}`.includes("ind")) {
+    return `url(${wind})`;
+  } else {
+    return `url(${clear})`;
   }
-
-  //   switch (conditions) {
-  //     case `${conditions}`.includes("cloud"):
-  //       todayCast.style.backgroundImage = `url(${rain})`;
-  //       break;
-  //     case 1:
-  //       todayCast.style.backgroundImage = `url(${rain})`;
-  //       break;
-  //     case 2:
-  //       todayCast.style.backgroundImage = `url(${rain})`;
-  //       break;
-  //     case 3:
-  //       todayCast.style.backgroundImage = `url(${rain})`;
-  //       break;
-  //     case 4:
-  //       todayCast.style.backgroundImage = `url(${rain})`;
-  //       break;
-  //     case 5:
-  //       todayCast.style.backgroundImage = `url(${rain})`;
-  //       break;
-  //     case 6:
-  //       todayCast.style.backgroundImage = `url(${rain})`;
-  //       break;
-  //     default:
-  //       todayCast.style.backgroundImage = `url(${clear})`;
-  //   }
 }
+// function selectBackground(conditions) {
+//   if (`${conditions}`.includes("ust")) {
+//     todayCast.style.backgroundImage = `url(${dust})`;
+//   } else if (`${conditions}`.includes("lear")) {
+//     todayCast.style.backgroundImage = `url(${clear})`;
+//   } else if (`${conditions}`.includes("ain")) {
+//     todayCast.style.backgroundImage = `url(${rain})`;
+//   } else if (`${conditions}`.includes("loud")) {
+//     todayCast.style.backgroundImage = `url(${cloud})`;
+//   } else if (`${conditions}`.includes("og")) {
+//     todayCast.style.backgroundImage = `url(${fog})`;
+//   } else if (`${conditions}`.includes("ail")) {
+//     todayCast.style.backgroundImage = `url(${hail})`;
+//   } else if (`${conditions}`.includes("aze")) {
+//     todayCast.style.backgroundImage = `url(${haze})`;
+//   } else if (`${conditions}`.includes("vercast")) {
+//     todayCast.style.backgroundImage = `url(${overcast})`;
+//   } else if (`${conditions}`.includes("now")) {
+//     todayCast.style.backgroundImage = `url(${snow})`;
+//   } else if (`${conditions}`.includes("ind")) {
+//     todayCast.style.backgroundImage = `url(${wind})`;
+//   } else {
+//     todayCast.style.backgroundImage = `url(${clear})`;
+//   }
+// }

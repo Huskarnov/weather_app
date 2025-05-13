@@ -1,6 +1,7 @@
 import { populate } from "./populate_elements_module";
 
 const searchForm = document.querySelector(".searchForm");
+const loader = document.querySelector(".loader");
 
 // MRS6M7KMEV78MFG3967BMDGGN
 
@@ -15,6 +16,7 @@ const searchForm = document.querySelector(".searchForm");
 // https://api.freepik.com/v1/ai/text-to-icon
 
 async function getData(city) {
+  loader.style.display = "block";
   try {
     const response = await fetch(
       `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${city}?key=MRS6M7KMEV78MFG3967BMDGGN&unitGroup=metric&include=current,hours`,
@@ -31,6 +33,7 @@ async function getData(city) {
   } catch (error) {
     errorHandler(error);
   }
+  loader.style.display = "none";
 }
 
 function errorHandler(error) {
@@ -43,3 +46,5 @@ searchForm.addEventListener("submit", (event) => {
   const input = formData.get("city");
   getData(input);
 });
+
+getData("batna");

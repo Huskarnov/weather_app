@@ -120,7 +120,7 @@ header {
       justify-content: center;
       align-items: center;
       height: 30px;
-      padding: 0px 30px;
+      padding: 0px 10px;
 
       cursor: pointer;
     }
@@ -142,8 +142,9 @@ main {
 
   background-image: url(/ressources/images/dust-day.svg);
   background-size: contain;
-  background-repeat: no-repeat;
+  background-repeat: round;
   /* background-color: rebeccapurple; */
+  /* background-blend-mode: darken; */
 }
 
 .todayLeft {
@@ -186,6 +187,8 @@ main {
 .todayTemperature {
   font-size: 2rem;
   font-weight: 800;
+
+  /* width: 100px; */
 }
 
 .todayRight {
@@ -197,6 +200,7 @@ main {
   gap: 10px;
 
   height: 100%;
+  width: 110px;
   /* background-color: aqua; */
 }
 
