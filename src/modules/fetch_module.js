@@ -37,7 +37,8 @@ async function getData(city) {
 }
 
 function errorHandler(error) {
-  console.log(`${error}`);
+  console.trace(`${error}`);
+  alert(`This city is outside earth, no data`);
 }
 
 searchForm.addEventListener("submit", (event) => {
@@ -47,4 +48,4 @@ searchForm.addEventListener("submit", (event) => {
   getData(input);
 });
 
-getData("batna");
+getData("tokyo");
