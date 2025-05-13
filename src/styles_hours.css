@@ -2,11 +2,25 @@
   display: flex;
   flex-direction: column;
   align-items: start;
+  gap: 10px;
+
+  & h3 {
+    font-size: 2rem;
+    text-align: center;
+    width: 100%;
+  }
 }
 
 .hoursCast {
   display: flex;
-  gap: 20px;
+  gap: 15px;
+}
+.futureTop,
+.futureMid,
+.futureBot {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
 }
 
 .hourly {
@@ -17,7 +31,7 @@
   gap: 10px;
 
   width: 100px;
-  height: 200px;
+  height: 300px;
 
   border-radius: 20px;
   border: 2px solid black;
@@ -28,6 +42,8 @@
     font-size: 2rem;
     font-weight: 500;
   }
+  /* & img {
+  } */
   & p:nth-child(3) {
     font-size: 1.5rem;
     font-weight: 500;
@@ -39,5 +55,12 @@
   & p:nth-child(5) {
     font-size: 2rem;
     font-weight: 500;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .hoursCast {
+    flex-direction: column;
+    /* overflow-x: scroll; */
   }
 }

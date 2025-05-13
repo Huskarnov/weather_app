@@ -82,10 +82,18 @@ h6 {
   isolation: isolate;
 }
 /* ---------------------------------------------------------- */
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 header {
   display: flex;
   justify-content: center;
   align-items: center;
+
+  margin-top: 50px;
+  margin-bottom: 50px;
 
   & h2 {
     font-size: 4rem;
@@ -121,9 +129,10 @@ header {
 
 main {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 20px;
+  gap: 30px;
 }
 
 .todayCast {
@@ -131,6 +140,9 @@ main {
   justify-content: center;
   align-items: center;
 
+  background-image: url(/ressources/images/dust-day.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
   /* background-color: rebeccapurple; */
 }
 
@@ -154,13 +166,16 @@ main {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+
   position: relative;
+
+  width: 100%;
+  margin-top: 140px;
   /* background-color: red; */
 
-  & img {
-    /* background-color: green; */
+  /* & img {
     height: 150px;
-  }
+  } */
 
   & p {
     font-size: 2rem;
@@ -189,6 +204,7 @@ main {
   /* display: flex;
   justify-content: center;
   align-items: center; */
+  font-size: 1rem;
   text-align: center;
   color: grey;
   font-weight: 500;
@@ -200,6 +216,7 @@ main {
 
 .todayWind {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 
@@ -208,7 +225,7 @@ main {
   }
 }
 .todayArrow {
-  font-size: 1.5rem;
+  font-size: 4rem;
   text-align: center;
 }
 .windPower {
