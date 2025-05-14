@@ -49,29 +49,37 @@ function populate(data) {
   let currentDay = 0;
 
   hourlyElements.forEach((element, index) => {
+    const children = element.children;
     // houre
-    element.children[0].textContent = `${currentHour}:00`;
+    children[0].textContent = `${currentHour}:00`;
     // image
-    element.children[1].style.backgroundImage = selectBackground(
+    children[1].style.backgroundImage = selectBackground(
       data.days[currentDay].hours[currentHour].conditions
     );
     // state
-    element.children[2].textContent =
+    children[2].textContent =
       data.days[currentDay].hours[currentHour].conditions;
     // temperature
-    element.children[3].textContent = `${data.days[currentDay].hours[currentHour].temp}°C`;
+    children[3].textContent = `${data.days[currentDay].hours[currentHour].temp}°C`;
     // precipitation
-    element.children[4].textContent = `${data.days[currentDay].hours[currentHour].precip}mm`;
+    children[4].textContent = `${data.days[currentDay].hours[currentHour].precip}mm`;
 
-    if (currentHour == 21 || currentHour == 22 || currentHour == 23) {
+    // if (currentHour == 21 || currentHour == 22 || currentHour == 23) {
+    //   currentDay = 1;
+    // }
+    // if (currentHour == 21) {
+    //   currentHour = 0;
+    // } else if (currentHour == 22) {
+    //   currentHour = 1;
+    // } else if (currentHour == 23) {
+    //   currentHour = 2;
+    // } else {
+    //   currentHour += 3;
+    // }
+
+    if (currentHour >= 21) {
       currentDay = 1;
-    }
-    if (currentHour == 21) {
-      currentHour = 0;
-    } else if (currentHour == 22) {
-      currentHour = 1;
-    } else if (currentHour == 23) {
-      currentHour = 2;
+      currentHour = currentHour - 23 + 2;
     } else {
       currentHour += 3;
     }
@@ -129,28 +137,3 @@ function selectBackground(conditions) {
     return `url(${clear})`;
   }
 }
-// function selectBackground(conditions) {
-//   if (`${conditions}`.includes("ust")) {
-//     todayCast.style.backgroundImage = `url(${dust})`;
-//   } else if (`${conditions}`.includes("lear")) {
-//     todayCast.style.backgroundImage = `url(${clear})`;
-//   } else if (`${conditions}`.includes("ain")) {
-//     todayCast.style.backgroundImage = `url(${rain})`;
-//   } else if (`${conditions}`.includes("loud")) {
-//     todayCast.style.backgroundImage = `url(${cloud})`;
-//   } else if (`${conditions}`.includes("og")) {
-//     todayCast.style.backgroundImage = `url(${fog})`;
-//   } else if (`${conditions}`.includes("ail")) {
-//     todayCast.style.backgroundImage = `url(${hail})`;
-//   } else if (`${conditions}`.includes("aze")) {
-//     todayCast.style.backgroundImage = `url(${haze})`;
-//   } else if (`${conditions}`.includes("vercast")) {
-//     todayCast.style.backgroundImage = `url(${overcast})`;
-//   } else if (`${conditions}`.includes("now")) {
-//     todayCast.style.backgroundImage = `url(${snow})`;
-//   } else if (`${conditions}`.includes("ind")) {
-//     todayCast.style.backgroundImage = `url(${wind})`;
-//   } else {
-//     todayCast.style.backgroundImage = `url(${clear})`;
-//   }
-// }

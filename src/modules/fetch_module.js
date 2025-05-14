@@ -1,5 +1,6 @@
 import { populate } from "./populate_elements_module";
 
+const main = document.querySelector("main");
 const searchForm = document.querySelector(".searchForm");
 const loader = document.querySelector(".loader");
 
@@ -34,6 +35,7 @@ async function getData(city) {
     errorHandler(error);
   }
   loader.style.display = "none";
+  main.style.display = "flex";
 }
 
 function errorHandler(error) {
