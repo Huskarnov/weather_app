@@ -77,11 +77,11 @@ function populate(data) {
     //   currentHour += 3;
     // }
 
-    if (currentHour >= 21) {
+    if (currentHour < 21) {
+      currentHour += 3;
+    } else {
       currentDay = 1;
       currentHour = currentHour - 23 + 2;
-    } else {
-      currentHour += 3;
     }
   });
 }
